@@ -22,5 +22,5 @@ class RedditCog(commands.Cog):
     async def notif(self, ctx, sub: str, match: str):
         subreddit = await self.reddit.subreddit(sub)
         async for submission in subreddit.stream.submissions():
-            if match in submission.selftext:
+            if match in submission.selftext.lower():
                await ctx.send(f"{ctx.author.mention}: new link found!\n{submission.permalink}")
