@@ -14,7 +14,7 @@ class RedditCog(commands.Cog):
 
         self.running = False
         self.sub = None
-        self.match = none
+        self.match = None
 
     @commands.command(name="ping")
     @guild_only()
