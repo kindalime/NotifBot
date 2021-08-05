@@ -32,6 +32,8 @@ class RedditCog(commands.Cog):
         self.sub = sub
         self.match = match
 
+        await ctx.send("Notif bot setting up.")
+
         subreddit = await self.reddit.subreddit(sub)
         async for submission in subreddit.stream.submissions():
             if self.running:
@@ -51,6 +53,6 @@ class RedditCog(commands.Cog):
     @guild_only()
     async def notif_info(self, ctx):
         if self.running:
-            await ctx.send(f"Notif bot currently running. Sub:{self.sub} Match:{self.match}")
+            await ctx.send(f"Notif bot currently running. Sub: {self.sub} Match: {self.match}")
         else:
             await ctx.send("Notif bot not running!")
