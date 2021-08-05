@@ -38,6 +38,8 @@ class RedditCog(commands.Cog):
                 if match in submission.selftext.lower():
                     await ctx.send(f"{ctx.author.mention}: new link found!\nwww.reddit.com{submission.permalink}")
 
+    @commands.command(name="notif_shutdown")
+    @guild_only()
     async def notif_shutdown(self, ctx):
         if not self.running:
             await ctx.send("Notif bot is not currently running!")
@@ -45,6 +47,8 @@ class RedditCog(commands.Cog):
             self.running = False
             await ctx.send("Notif bot shutdown successfully.")
 
+    @commands.command(name="notif_info")
+    @guild_only()
     async def notif_info(self, ctx):
         if self.running:
             await ctx.send(f"Notif bot currently running. Sub:{self.sub} Match:{self.match}")
